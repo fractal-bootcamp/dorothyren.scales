@@ -1,32 +1,18 @@
-import { useState } from 'react'
-
-function InputField({ placeholder, value, onChange }: { placeholder: string, value: string, onChange: (value: string) => void }) {
-  return (
-    <input type="text" placeholder={placeholder}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  )
-}
-
+import { useEffect, useState } from "react"
 
 function App() {
-  const [name, setName] = useState('')
-  const [submittedName, setSubmittedName] = useState('')
+  const [input, setInput] = useState('')
+  const [output, setOutput] = useState('')
 
-  const handleSubmit = () => {
-    setSubmittedName(name)
-  }
+  useEffect(() => {
+    console.log('console clicked', output)
+  }, [output])
 
   return (
     <>
-      <h1>Props and Controlled Components</h1>
-      <InputField
-        placeholder="Enter your name"
-        value={name}
-        onChange={setName}
-      />
-
+      <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
+      <button type="submit" onClick={() => setOutput(input)}>Submit</button>
+      {output}
     </>
   )
 }
