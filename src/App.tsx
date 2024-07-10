@@ -5,12 +5,12 @@ function App() {
   const [output, setOutput] = useState('')
 
   useEffect(() => {
-    console.log('console clicked', output)
+    console.log('button clicked')
   }, [output])
 
   return (
     <>
-      <input type="text" value={input} onChange={(e) => setInput(e.target.value)} />
+      <input type="text" onChange={(e) => setInput(e.target.value)}></input>
       <button type="submit" onClick={() => setOutput(input)}>Submit</button>
       {output}
     </>
